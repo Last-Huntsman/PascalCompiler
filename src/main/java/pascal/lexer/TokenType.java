@@ -1,0 +1,40 @@
+package pascal.lexer;
+
+public enum TokenType {
+
+    INTEGER_LITERAL, CHAR_LITERAL, BOOLEAN_LITERAL, STRING_LITERAL, REAL_LITERAL,
+
+    IDENTIFIER,
+
+    PROGRAM, VAR, BEGIN, END, CONST,
+    IF, THEN, ELSE,
+    FOR, TO, DOWNTO, DO,
+    WHILE,
+    REPEAT, UNTIL,
+    PROCEDURE, FUNCTION,
+    ARRAY, OF,
+    TYPE,
+    RECORD,
+    BREAK, CONTINUE,
+    EXIT,
+
+    INTEGER, CHAR, BOOLEAN, STRING, DOUBLE,
+
+    PLUS, MINUS, STAR, SLASH,
+    DIV, MOD,
+    ASSIGN,         // :=
+    EQ, NEQ,        // = <>
+    LT, GT, LE, GE, // < > <= >=
+    AND, OR, NOT,
+    XOR,
+
+    LPAREN, RPAREN,
+    LBRACKET, RBRACKET,
+    COMMA, SEMICOLON, COLON, DOT, DOTDOT,
+
+    WRITE, WRITELN, READ, READLN,
+
+    INC, DEC, ABS, LENGTH, POS, COPY,
+
+    EOF, UNKNOWN
+}
