@@ -1,5 +1,8 @@
 package pascal.ast;
 
+import pascal.semantic.Symbol;
+import pascal.semantic.Type;
+
 import java.util.List;
 
 /**
@@ -26,6 +29,8 @@ public abstract class Node {
     // Например: "Ошибка [3:5]" означает строка 3, столбец 5.
     public final int line;
     public final int column;
+    public Type resolvedType;
+    public Symbol resolvedSymbol;
 
     // Конструктор вызывается из каждого подкласса через super(line, col)
     protected Node(int line, int column) {
@@ -75,7 +80,7 @@ public abstract class Node {
     private void printTree(String prefix, boolean isLast) {
         // Выбираем коннектор: "└── " для последнего ребёнка, "├── " для остальных
         String connector = isLast ? "└── " : "├── ";
-        System.out.println(prefix + connector + nodeLabel() + posTag());
+        System.out.println(prefix + connector + nodeLabel() + typeTag() + posTag());
 
         // Отступ для детей: если мы последний — пробелы, если нет — вертикальная черта
         String childPrefix = prefix + (isLast ? "    " : "│   ");
@@ -97,6 +102,10 @@ public abstract class Node {
      */
     private String posTag() {
         return String.format("  \u001B[90m[%d:%d]\u001B[0m", line, column);
+    }
+
+    private String typeTag() {
+        return resolvedType == null ? "" : " : " + resolvedType.displayName();
     }
 
 

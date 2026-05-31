@@ -94,7 +94,7 @@ public class Lexer {
     }
 
     private void skipWhitespace() {
-        while (pos < source.length() && Character.isWhitespace(current())) {
+        while (pos < source.length() && (Character.isWhitespace(current()) || current() == '\uFEFF')) {
             advance();
         }
     }
